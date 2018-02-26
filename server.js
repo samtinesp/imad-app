@@ -8,7 +8,7 @@ app.use(morgan('combined'));
 
 var articles={
     'article-one'   :{
-        title: 'Article-one | Sam',
+        title: 'article-one | Sam',
         heading: 'Article one',
         content:`<p>
                 This is article one. Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test 
@@ -72,7 +72,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:articleName',function(req,res){
-    var articleName=req.param.articleName;
+    var articleName=req.parans.articleName;
     res.send(createTemplate(articles[articleName]));
 });
 

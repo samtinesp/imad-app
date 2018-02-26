@@ -6,12 +6,28 @@ var app = express();
 app.use(morgan('combined'));
 
 
-var articleOne ={
-    title: 'Article-one | Sam',
-    heading: 'Article one',
-    content:`<p>
-            This is article one. Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test 
-            </p> `,
+var articles={
+    'article-one'   :{
+        title: 'Article-one | Sam',
+        heading: 'Article one',
+        content:`<p>
+                This is article one. Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test 
+                </p> `,
+    },
+    'article-two'   :{
+        title: 'Article-two | Sam',
+        heading: 'Article two',
+        content:`<p>
+                This is article Two. 
+                </p> `,
+    },
+    'article-three' :{
+        title: 'Article-three | Sam',
+        heading: 'Article three',
+        content:`<p>
+                This is article three.
+                </p> `,
+    },
 };
 
 
@@ -55,8 +71,9 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/article-one',function(req,res){
-    res.send(createTemplate(articleOne));
+app.get('/:articleName',function(req,res){
+    var articleName=req.param.articleName;
+    res.send(createTemplate(articles[articleName]));
 });
 
 app.get('/article-two',function(req,res){

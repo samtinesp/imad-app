@@ -7,21 +7,21 @@ app.use(morgan('combined'));
 
 
 var articles={
-    'article-one'   :{
+    'article-one': {
         title: 'article-one | Sam',
         heading: 'Article one',
         content:`<p>
                 This is article one. Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test Test test test 
                 </p> `,
     },
-    'article-two'   :{
+    'article-two': {
         title: 'Article-two | Sam',
         heading: 'Article two',
         content:`<p>
                 This is article Two. 
                 </p> `,
     },
-    'article-three' :{
+    'article-three': {
         title: 'Article-three | Sam',
         heading: 'Article three',
         content:`<p>
@@ -72,7 +72,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/:articleName',function(req,res){
-    var articleName = req.parans.articleName;
+    var articleName = req.params.articleName;
     res.send(createTemplate(articles[articleName]));
 });
 
